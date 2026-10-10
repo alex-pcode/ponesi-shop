@@ -36,6 +36,7 @@ nav{display:flex;gap:26px;font-weight:500;font-size:14.5px}nav a:hover{color:var
 .hs-t p{font-size:17px;max-width:40ch;margin-top:14px;opacity:.8}
 .hs-buy{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
 .hs-buy .price{color:var(--fg);font-size:30px;transition:color .6s}
+@media(max-width:860px){.hs-buy .price{display:none}.hs-buy{flex-wrap:nowrap;gap:10px}.hs-buy .btn{flex:1;padding:13px 12px;white-space:nowrap}}
 .hs .btn{background:var(--fg);color:var(--bg);border-color:var(--fg)}.hs .btn:hover{background:var(--ac);border-color:var(--ac);color:#fff}
 .hs .btn.ghost{background:transparent;color:var(--fg)}.hs .btn.ghost:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .hs-stage{position:relative;aspect-ratio:1;width:100%;max-width:640px;justify-self:center}
@@ -296,7 +297,7 @@ badge();render();
 </script>
 <script>
 (function(){
-var D=[{bg:"#e3cfc6",fg:"#2a1f1a",ac:"#6e1f2c",c:"Bordo"},{bg:"#6e1f2c",fg:"#fbeef0",ac:"#efcfd6",c:"Bordo%20i%20roze"},{bg:"#3a2b23",fg:"#f5efe6",ac:"#d8c3a5",c:"Nude%20%28braon%2C%20krem%2C%20be%C5%BE%29"},{bg:"#e7dcc8",fg:"#2a1f1a",ac:"#4f6f8f",c:"More%20i%20pesak"}],hs=document.getElementById('hs'),T=hs.querySelectorAll('.hs-t'),I=hs.querySelectorAll('.hs-stage img'),B=hs.querySelectorAll('#hsSw button'),bar=document.getElementById('hsBar'),cur=0,timer=null,MS=5500,paused=false;
+var D=[{bg:"#e3cfc6",fg:"#2a1f1a",ac:"#6e1f2c",c:"Bordo"},{bg:"#6e1f2c",fg:"#fbeef0",ac:"#efcfd6",c:"Bordo%20i%20roze"},{bg:"#3a2b23",fg:"#f5efe6",ac:"#d8c3a5",c:"Nude%20%28braon%2C%20krem%2C%20be%C5%BE%29"},{bg:"#8EACC6",fg:"#2a1f1a",ac:"#1f3550",c:"More%20i%20pesak"}],hs=document.getElementById('hs'),T=hs.querySelectorAll('.hs-t'),I=hs.querySelectorAll('.hs-stage img'),B=hs.querySelectorAll('#hsSw button'),bar=document.getElementById('hsBar'),cur=0,timer=null,MS=5500,paused=false;
 var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function go(n){cur=(n+D.length)%D.length;var d=D[cur];hs.style.setProperty('--bg',d.bg);hs.style.setProperty('--fg',d.fg);hs.style.setProperty('--ac',d.ac);
  [T,I,B].forEach(function(L){L.forEach(function(x,i){x.classList.toggle('on',i===cur)})});
