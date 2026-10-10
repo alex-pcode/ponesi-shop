@@ -128,7 +128,7 @@ footer{background:var(--esp);color:#cdbca7;padding:56px 0 30px}footer a{text-dec
 <div class="opt"><div class="opt-h">Kaiš</div><div class="chips" id="strap"></div></div>
 <div class="opt"><div class="opt-h">Količina</div><span class="qty"><button id="qm" aria-label="Manje">&minus;</button><span id="qv">1</span><button id="qp" aria-label="Više">+</button></span></div>
 <div class="buyrow"><button class="btn" id="addBtn">U korpu</button></div>
-<p class="note" style="margin-top:10px">Plaćanje pouzećem. Za kombinaciju dve boje izaberi poslednji krug i upiši boje u napomenu. Pre izrade ti se javljamo da potvrdimo boje.</p>
+<p class="note" style="margin-top:10px">Plaćanje pouzećem. Poslednja četiri kruga su kombinacije boja; za neku drugu izaberi poslednji krug i upiši boje u napomenu. Pre izrade ti se javljamo da potvrdimo boje.</p>
 <div class="facts"><div class="fact"><b>1–7 dana</b>izrada</div><div class="fact"><b>Ručno</b>heklano</div><div class="fact"><b>20+</b>boja</div></div>
 </div></div>
 
@@ -219,16 +219,17 @@ badge();render();
 </script>
 <script>
 (function(){
-var fmt=window.PN.fmt,COLORS=window.PN.COLORS.concat([['Kombinacija dve boje','']]);
+var fmt=window.PN.fmt,COLORS=window.PN.COLORS.concat([['Bordo i roze','linear-gradient(135deg,#7a1f2e 50%,#efcfd6 50%)'],['Nude (braon, krem, bež)','conic-gradient(#4a2c22 0 33%,#ece3d1 0 66%,#a69584 0)'],['More i pesak','linear-gradient(135deg,#8fb0cc 50%,#d9c39a 50%)'],['Druga kombinacija (upiši u napomenu)','conic-gradient(#d9c39a 0 25%,#8fb0cc 0 50%,#d98a95 0 75%,#6f705a 0)']]);
 var IMGS=['img/cortado-1.jpg','img/cortado-2.jpg','img/cortado-3.jpg','img/cortado-4.jpg','img/cortado-5.jpg','img/cortado-6.jpg','img/cortado-7.jpg'];
 var SIZES=[['Cortado','26×12 cm',4200],['XL cortado','30×14 cm',4500]],STRAPS=[['Bez kaiša','',0],['Sa kaišem','+400 RSD',400]];
 var si=0,ci=18,sk=0,q=1;function el(id){return document.getElementById(id)}
+var qb=new URLSearchParams(location.search).get('boja');if(qb){COLORS.forEach(function(c,i){if(c[0].toLowerCase()===qb.toLowerCase())ci=i})}
 var st=el('stage'),th=el('thumbs');
 th.innerHTML=IMGS.map(function(s,i){return '<button class="'+(i?'':'on')+'" data-i="'+i+'" aria-label="Slika '+(i+1)+'"><img src="'+s+'" alt=""></button>'}).join('');
 th.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;th.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});st.style.opacity=0;setTimeout(function(){st.src=IMGS[+b.dataset.i];st.style.opacity=1},140)});
 function chips(id,arr,cur){el(id).innerHTML=arr.map(function(a,i){return '<button class="chip'+(i===cur?' on':'')+'" data-i="'+i+'">'+a[0]+(a[1]?'<small>'+a[1]+'</small>':'')+'</button>'}).join('')}
 chips('size',SIZES,si);chips('strap',STRAPS,sk);
-el('sw').innerHTML=COLORS.map(function(c,i){return '<button class="'+(i===ci?'on':'')+(c[1]?'':' combo')+'" data-i="'+i+'" title="'+c[0]+'" aria-label="Boja '+c[0]+'"'+(c[1]?' style="background:'+c[1]+'"':'')+'></button>'}).join('');
+el('sw').innerHTML=COLORS.map(function(c,i){return '<button class="'+(i===ci?'on':'')+'" data-i="'+i+'" title="'+c[0]+'" aria-label="Boja '+c[0]+'" style="background:'+c[1]+'"></button>'}).join('');
 function pick(id,fn){el(id).addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;el(id).querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});fn(+b.dataset.i);upd()})}
 pick('size',function(i){si=i});pick('strap',function(i){sk=i});pick('sw',function(i){ci=i});
 function pr(){return SIZES[si][2]+STRAPS[sk][2]}

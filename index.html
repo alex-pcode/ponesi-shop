@@ -26,14 +26,37 @@ nav{display:flex;gap:26px;font-weight:500;font-size:14.5px}nav a:hover{color:var
 @media(max-width:860px){nav{display:none}}
 .cartbtn{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--esp);background:var(--milk);color:var(--esp);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px}.cartbtn:hover{background:var(--esp);color:var(--milk)}
 .cartbtn i{font-style:normal;background:var(--bord);color:#fff;border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12px;padding:0 6px}
-.hero{background:var(--esp);color:#e9dccb;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;padding-top:56px;padding-bottom:64px}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:32px;padding-bottom:44px}}
-.hero .eyebrow{color:var(--latte)}
-.hero h1{font-size:clamp(44px,6.4vw,86px);color:var(--milk);margin:14px 0 16px}.hero h1 .script{font-size:1.15em;color:var(--latte);display:block;line-height:.9}
-.hero p.lead{font-size:18.5px;max-width:44ch;color:#d9cbb8}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.hero .btn{background:var(--milk);color:var(--esp);border-color:var(--milk)}.hero .btn:hover{background:var(--latte);border-color:var(--latte)}.hero .btn.ghost{background:transparent;color:var(--milk);border-color:#8d7a6b}.hero .btn.ghost:hover{border-color:var(--milk)}
-.hero .art{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;align-items:end}.hero .art img{border-radius:200px 200px 16px 16px;aspect-ratio:3/4.3;object-fit:cover;width:100%}.hero .art img:last-child{border-radius:16px;aspect-ratio:1;margin-bottom:40px}
+.hs{--bg:#e3cfc6;--fg:#2a1f1a;--ac:#6e1f2c;background:var(--bg);color:var(--fg);transition:background-color .6s ease,color .6s ease;overflow:hidden;position:relative}
+.hs-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center;min-height:min(78vh,700px);padding-top:40px;padding-bottom:10px}
+@media(max-width:860px){.hs-in{grid-template-columns:1fr;gap:0;min-height:0;padding-top:26px}}
+.hs .eyebrow{color:var(--ac);transition:color .6s}
+.hs-texts{display:grid}.hs-t{grid-area:1/1;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}.hs-t.on{opacity:1;transform:none;pointer-events:auto}
+.hs-t h1{font-family:Allura,cursive;font-weight:400;font-size:clamp(84px,11vw,150px);line-height:.85;color:var(--fg);margin-top:10px;transition:color .6s}
+.hs-t h2{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,3.4vw,40px);font-weight:500;color:var(--fg);opacity:.85;margin-top:4px;transition:color .6s}
+.hs-t p{font-size:17px;max-width:40ch;margin-top:14px;opacity:.8}
+.hs-buy{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.hs-buy .price{color:var(--fg);font-size:30px;transition:color .6s}
+.hs .btn{background:var(--fg);color:var(--bg);border-color:var(--fg)}.hs .btn:hover{background:var(--ac);border-color:var(--ac);color:#fff}
+.hs .btn.ghost{background:transparent;color:var(--fg)}.hs .btn.ghost:hover{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.hs-stage{position:relative;aspect-ratio:1;width:100%;max-width:640px;justify-self:center}
+.hs-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:translateX(40px) scale(.94) rotate(-2deg);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 30px 34px rgba(0,0,0,.28))}
+.hs-stage img.on{opacity:1;transform:none}
+.hs-stage::before{content:"";position:absolute;left:12%;right:12%;top:12%;bottom:12%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 68%)}
+@media(max-width:860px){.hs-stage{max-width:380px;order:-1;margin:-10px auto -20px}}
+.hs-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:6px;padding-bottom:30px;flex-wrap:wrap}
+.hs-sw{display:flex;gap:10px;flex-wrap:wrap}
+.hs-sw button{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border:1.5px solid transparent;border-radius:999px;padding:4px 14px 4px 4px;color:var(--fg);font-size:13.5px;font-weight:500;transition:.25s}
+.hs-sw button img{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.55);object-fit:contain;padding:2px}
+.hs-sw button.on{border-color:var(--fg);background:rgba(255,255,255,.3)}
+.hs-sw button:hover{background:rgba(255,255,255,.35)}
+@media(max-width:560px){.hs-sw button span{display:none}.hs-sw button{padding:4px}}
+.hs-arrows{display:flex;align-items:center;gap:10px}
+.hs-arrows button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--fg);background:transparent;color:var(--fg);display:grid;place-items:center;transition:.25s}.hs-arrows button:hover{background:var(--fg);color:var(--bg)}
+.hs-arrows svg{width:20px;height:20px}
+.hs-count{font-family:"Cormorant Garamond",serif;font-size:20px;min-width:52px;text-align:center}
+.hs-bar{position:absolute;left:0;bottom:0;height:3px;background:var(--fg);opacity:.35;width:0}
+.hs-bar.run{animation:hsbar linear forwards}@keyframes hsbar{to{width:100%}}
+@media(prefers-reduced-motion:reduce){.hs-stage img,.hs-t{transition:none}.hs-bar{display:none}}
 .trust{background:var(--milk);border-bottom:1px solid var(--line)}
 .trust .wrap{display:flex;gap:8px 34px;justify-content:center;flex-wrap:wrap;padding:15px 20px;font-weight:500;font-size:14px;color:var(--esp)}
 .trust span::before{content:"\2615";margin-right:8px;opacity:.6}
@@ -93,13 +116,17 @@ footer{background:var(--esp);color:#cdbca7;padding:56px 0 30px}footer a{text-dec
 <nav><a href="cortado.html">Cortado</a><a href="#meni">Meni modela</a><a href="#torbe">Torbe</a><a href="#boje">Boje</a><a href="#porucivanje">Poručivanje</a></nav>
 <button class="cartbtn" aria-label="Otvori korpu">Korpa <i>0</i></button></div></header>
 
-<section class="hero"><div class="wrap">
-<div><span class="eyebrow">Crochet bags · Novi Sad</span>
-<h1><span class="script">Ponesi</span> torbu koja je heklana samo za tebe</h1>
-<p class="lead">Ručno heklane torbe nazvane po kafi: od malog mocha do prostranog americana. Biraš model i boju, a mi je heklamo za 1 do 7 dana.</p>
-<div class="cta"><a class="btn" href="#torbe">Izaberi torbu</a><a class="btn ghost" href="#meni">Pogledaj meni</a></div></div>
-<div class="art"><img src="img/hero.jpg" alt="Mini latte torba u bež boji"><img src="img/cortado-1.jpg" alt="Cortado torbe u bordo i bordo-roze kombinaciji"></div>
-</div></section>
+<section class="hs" id="hs" aria-roledescription="carousel" aria-label="Cortado u bojama">
+<div class="wrap hs-in">
+<div><span class="eyebrow">Ponesi · ručno heklano</span>
+<div class="hs-texts" aria-live="polite"><div class="hs-t on" data-i="0"><h1>cortado</h1><h2>Bordo</h2><p>Klasika koja ide uz sve. Duboka bordo boja, od farmerki i bele majice do haljine.</p></div><div class="hs-t" data-i="1"><h1>cortado</h1><h2>Bordo i roze</h2><p>Can’t choose just one? Bordo i roze isprepletani u istoj torbici.</p></div><div class="hs-t" data-i="2"><h1>cortado</h1><h2>Nude</h2><p>Braon, krem i bež, red po red. Topla kombinacija za svaki dan.</p></div><div class="hs-t" data-i="3"><h1>cortado</h1><h2>More i pesak</h2><p>Naša omiljena kombinacija boja: pesak i more. Leto koje nosiš sa sobom.</p></div></div>
+<div class="hs-buy"><span class="price">4.200 RSD</span><a class="btn" id="hsLink" href="cortado.html?boja=Bordo">Poruči ovu boju</a><a class="btn ghost" href="#meni">Svi modeli</a></div></div>
+<div class="hs-stage"><img src="img/hero-bordo.webp" alt="Cortado torbica, boja bordo" width="1000" height="1000" class="on"><img src="img/hero-bordo-roze.webp" alt="Cortado torbica, boja bordo i roze" width="1000" height="1000"><img src="img/hero-nude.webp" alt="Cortado torbica, boja nude" width="1000" height="1000"><img src="img/hero-more-pesak.webp" alt="Cortado torbica, boja more i pesak" width="1000" height="1000"></div>
+</div>
+<div class="wrap hs-nav"><div class="hs-sw" id="hsSw"><button class="on" data-i="0" aria-label="Bordo"><img src="img/hero-bordo-ikona.webp" alt=""><span>Bordo</span></button><button class="" data-i="1" aria-label="Bordo i roze"><img src="img/hero-bordo-roze-ikona.webp" alt=""><span>Bordo i roze</span></button><button class="" data-i="2" aria-label="Nude"><img src="img/hero-nude-ikona.webp" alt=""><span>Nude</span></button><button class="" data-i="3" aria-label="More i pesak"><img src="img/hero-more-pesak-ikona.webp" alt=""><span>More i pesak</span></button></div>
+<div class="hs-arrows"><button id="hsPrev" aria-label="Prethodna boja" style="transform:scaleX(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><span class="hs-count" id="hsCount">1 / 4</span><button id="hsNext" aria-label="Sledeća boja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
+<div class="hs-bar" id="hsBar"></div>
+</section>
 <div class="trust"><div class="wrap"><span>Ručni rad, komad po komad</span><span>20+ boja i kombinacije</span><span>Izrada 1–7 dana</span><span>Kaiš uz svaki model +400 RSD</span></div></div>
 
 <section class="block dark" id="meni"><div class="wrap">
@@ -265,6 +292,22 @@ document.querySelectorAll('[data-add]').forEach(function(b){b.onclick=function()
  add({id:b.dataset.id+'-'+note,name:s.dataset.name,price:cardPrice(bd),img:b.dataset.img,note:note})}});
 var cats=document.getElementById('cats');if(cats)cats.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cats.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});var c=b.dataset.c;document.querySelectorAll('#grid .card').forEach(function(card){card.style.display=(c==='all'||card.dataset.c.split(' ').indexOf(c)>-1)?'':'none'})});
 badge();render();
+})();
+</script>
+<script>
+(function(){
+var D=[{bg:"#e3cfc6",fg:"#2a1f1a",ac:"#6e1f2c",c:"Bordo"},{bg:"#6e1f2c",fg:"#fbeef0",ac:"#efcfd6",c:"Bordo%20i%20roze"},{bg:"#3a2b23",fg:"#f5efe6",ac:"#d8c3a5",c:"Nude%20%28braon%2C%20krem%2C%20be%C5%BE%29"},{bg:"#e7dcc8",fg:"#2a1f1a",ac:"#4f6f8f",c:"More%20i%20pesak"}],hs=document.getElementById('hs'),T=hs.querySelectorAll('.hs-t'),I=hs.querySelectorAll('.hs-stage img'),B=hs.querySelectorAll('#hsSw button'),bar=document.getElementById('hsBar'),cur=0,timer=null,MS=5500,paused=false;
+var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function go(n){cur=(n+D.length)%D.length;var d=D[cur];hs.style.setProperty('--bg',d.bg);hs.style.setProperty('--fg',d.fg);hs.style.setProperty('--ac',d.ac);
+ [T,I,B].forEach(function(L){L.forEach(function(x,i){x.classList.toggle('on',i===cur)})});
+ document.getElementById('hsLink').href='cortado.html?boja='+d.c;document.getElementById('hsCount').textContent=(cur+1)+' / '+D.length;arm()}
+function arm(){clearTimeout(timer);bar.classList.remove('run');void bar.offsetWidth;if(still||paused)return;bar.style.animationDuration=MS+'ms';bar.classList.add('run');timer=setTimeout(function(){go(cur+1)},MS)}
+B.forEach(function(b){b.onclick=function(){go(+b.dataset.i)}});
+document.getElementById('hsPrev').onclick=function(){go(cur-1)};document.getElementById('hsNext').onclick=function(){go(cur+1)};
+hs.addEventListener('mouseenter',function(){paused=true;arm()});hs.addEventListener('mouseleave',function(){paused=false;arm()});
+hs.addEventListener('focusin',function(){paused=true;arm()});hs.addEventListener('focusout',function(){paused=false;arm()});
+var x0=null;hs.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});hs.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1));x0=null});
+go(0);
 })();
 </script>
 </body></html>
